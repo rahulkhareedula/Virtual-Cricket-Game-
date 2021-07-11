@@ -1,0 +1,166 @@
+/* 
+============================================================================
+ Name      : cricket-game.cpp
+ Title     : Virtual Cricket game
+ Autor     : Khareedula Rahul
+============================================================================ 
+*/
+
+#include<iostream>
+#include<unistd.h>
+#include<string>
+#include<stdlib.h>
+#include<time.h>
+using namespace std;
+void greeting();
+void decideWinner(int , int);
+
+
+class Team {
+
+	public:
+
+		string TeamName;
+		string PlayerName[3];
+		int Runs ;
+
+		void displayPlayers()
+		{
+
+			cout<<" \n Players of team "<<TeamName<<" are :"<<endl<<endl;
+			sleep(2);
+			for(int i=0;i<=2;i++){
+
+				cout<<"player"<<i+1<<":"<<PlayerName[i]<<endl;
+				sleep(2);
+		     }
+		}
+		void batsmanFirst() {
+				srand(time(NULL));
+				int B = (rand() % 3);
+				cout<< "batsman for first inning is : " << PlayerName[B]<<endl;
+				sleep(2);
+		   }
+		void bowlerFirst() {
+				srand(time(NULL));
+				int B = (rand() % 3);
+				cout<< "bowler for first inning is : " << PlayerName[B]<<endl;
+				sleep(2);
+		   }
+
+		void bowlerSecond() {
+			srand(time(NULL));
+			int C = (rand() % 3);
+			cout<< "bowler for second inning is : " << PlayerName[C]<<endl<<endl<<endl;
+			sleep(2);
+			}
+
+		void batsmanSecond() {
+			srand(time(NULL));
+			int C = (rand() % 3);
+			cout<< "batsman for second inning is : " << PlayerName[C]<<endl;
+			}
+
+	     int playInning(int runsScored){
+			int score = 0;
+			srand(time(NULL));
+			for(int j = 1 ; j < 7 ; j++){
+			int A = (rand() % 7);
+			cout << "runs for ball "<<j << " in current inning is "<< A <<endl;
+			sleep(2);
+			score += A ;
+			}
+
+			cout<< "total runs in the current inning is : "<< score <<endl;
+			sleep(2);
+			return runsScored = score;
+		}
+
+
+
+
+
+
+};
+
+
+
+int main(){
+
+	greeting();
+
+
+	Team tA,tB; 
+
+	tA.TeamName;
+	cout<<"Enter first team name : ";
+	getline(cin,tA.TeamName);
+
+	tA.PlayerName[0];
+	cout<<"Enter Name of player 1 of team "<<tA.TeamName << " : " ;
+	getline(cin,tA.PlayerName[0]);
+	tA.PlayerName[1];
+	cout<<"Enter Name of player 2 of team "<<tA.TeamName << " : " ;
+	getline(cin,tA.PlayerName[1]);
+	tA.PlayerName[2];
+	cout<<"Enter Name of player 3 of team "<<tA.TeamName << " : " ;
+	getline(cin,tA.PlayerName[2]);
+	tA.displayPlayers();
+	sleep(4);
+	tA.batsmanFirst();
+	tA.playInning(tA.Runs);
+
+	sleep(2);
+
+	tA.bowlerSecond();
+
+	cout<<"________________________________________________"<<endl<<endl;
+
+	tB.TeamName;
+	cout<<"Enter second team name : ";
+	getline(cin,tB.TeamName);
+	tB.PlayerName[0];
+	cout<<"Enter Name of player 1 of team "<<tB.TeamName << " : " ;
+	getline(cin,tB.PlayerName[0]);
+	tB.PlayerName[1];
+	cout<<"Enter Name of player 2 of team "<<tB.TeamName << " : " ;
+	getline(cin,tB.PlayerName[1]);
+	tB.PlayerName[2];
+	cout<<"Enter Name of player 3 of team "<<tB.TeamName << " : " ;
+	getline(cin,tB.PlayerName[2]);
+	tB.displayPlayers();
+	sleep(4);
+	tB.bowlerFirst();
+	tB.batsmanSecond();
+	tB.playInning(tB.Runs);
+// 	cout<<"Runs scored by team Team B in second inning is "<<tB.playInning(tB.Runs);<<endl<<endl<<endl<<endl;
+	sleep(5);
+
+
+	decideWinner(tA.Runs , tB.Runs);
+		return 0;
+}
+
+
+void greeting(){
+
+
+	cout<<"\t\t\t\t\t_______________________________________"<<endl;
+	cout<<"\t\t\t\t\t|                                        |"<<endl;
+	cout<<"\t\t\t\t\t|    WELCOME TO VIRTUAL CRICKET GAME     |"<<endl;
+	cout<<"\t\t\t\t\t|________________________________________|"<<endl<<endl<<endl<<endl;
+	sleep(3);
+	cout<<" Lets start the game "<<endl<<endl;
+	sleep(4);
+
+
+}
+
+void decideWinner(int teamAScore, int teamBScore) {
+	if(teamAScore<teamBScore){
+		cout<<"The winner is Team B"<<endl;
+	}
+	else{
+		cout<<"The winner is Team A"<<endl;
+	}
+}
